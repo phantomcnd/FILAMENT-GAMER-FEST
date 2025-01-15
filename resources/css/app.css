@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.neon-form {
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.6), 0 0 40px rgba(0, 191, 255, 0.4);
+    border: 2px solid rgba(0, 191, 255, 0.8); /* Borde azul claro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 2rem; /* Espaciado interno */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Efecto al pasar el cursor sobre el formulario */
+.neon-form:hover {
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.9), 0 0 30px rgba(0, 191, 255, 0.7), 0 0 50px rgba(0, 191, 255, 0.5);
+}
+
+/* Efecto Neón para el texto */
+.neon-text {
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+}
+
+/* Efecto Neón para los inputs */
+.neon-box {
+    box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff inset;
+}
+
+/* Efecto Neón para botones */
+.neon-btn {
+    box-shadow: 0 0 5px #ff00ff, 0 0 15px #ff00ff;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.neon-btn:hover {
+    box-shadow: 0 0 15px #ff00ff, 0 0 25px #ff00ff;
+}
+
+/* Estilo básico del botón con efecto de neón */
+.neon-btn {
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #1d4ed8; /* Azul oscuro */
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efecto de brillo al pasar el mouse */
+.neon-btn:hover {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6), 0 0 45px rgba(59, 130, 246, 0.5);
+    background-color: #2563eb; /* Azul más claro */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+/* Estilo para asegurar que el botón tenga bordes suaves */
+.neon-btn:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6);
+}
