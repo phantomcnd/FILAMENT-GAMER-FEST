@@ -11,19 +11,29 @@
 </head>
 <body class="bg-gray-900 text-white">
 
-    <!-- Barra de navegación -->
-    <nav class="flex justify-between items-center px-6 py-4 bg-gray-800">
-        <div class="text-2xl font-bold">Gamer Fest 2025</div>
-        <div>
-            <a href="{{ route('login') }}" 
-               class="px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-lg shadow-lg">
-                Iniciar Sesión
-            </a>
-        </div>
-    </nav>
+<nav class="flex justify-between items-center px-6 py-4 bg-gray-800 fixed top-0 left-0 right-0 z-50 shadow-md">
+    <a href="{{ url('/') }}" class="text-2xl font-bold text-white hover:text-pink-500 transition">
+        Gamer Fest 2025
+    </a>
+    <div class="flex items-center space-x-6">
+        <!-- Enlaces de navegación -->
+        <a href="#inicio" class="text-white hover:text-pink-500 transition">Inicio</a>
+        <a href="#juegos" class="text-white hover:text-pink-500 transition">Juegos</a>
+        <a href="#horarios" class="text-white hover:text-pink-500 transition">Horarios</a>
+        <a href="#reglamentos" class="text-white hover:text-pink-500 transition">Reglamentos</a>
+        <a href="#patrocinadores" class="text-white hover:text-pink-500 transition">Patrocinadores</a>
+        <a href="#redes-sociales" class="text-white hover:text-pink-500 transition">Redes Sociales</a>
+
+        <!-- Botón de Iniciar Sesión -->
+        <a href="{{ route('login') }}" class="btn-login">
+            Iniciar Sesión
+        </a>
+    </div>
+</nav>
+
 
     <!-- Contenido principal -->
-    <section class="flex flex-col md:flex-row items-center justify-center py-12 px-6">
+    <section id="inicio" class="flex flex-col md:flex-row items-center justify-center py-12 px-6">
         <!-- Lado izquierdo -->
         <div class="md:w-1/2 text-center md:text-left mb-6 md:mb-0">
             <h1 class="text-4xl font-extrabold mb-4">¡ESPE-L PRESENTAAA!</h1>
@@ -41,7 +51,7 @@
     </section>
 
 <!-- Sección de juegos -->
-<section class="py-12 bg-gray-800">
+<section id="juegos" class="py-12 bg-gray-800">
     <h2 class="text-3xl font-bold text-center mb-8">Nuestros Juegos</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
         <!-- Card 1 -->
@@ -139,12 +149,121 @@
         <p class="text-gray-400 text-sm mb-4 text-center">¡Diversión a toda velocidad! Corre en pistas alocadas y lanza ítems para ganar.</p>
         <p class="text-pink-500 font-bold text-lg text-center">$20.99</p>
     </div>
+
+            @foreach ($juegos as $juego)
+                <div class="bg-gray-700 p-4 rounded-lg shadow-lg w-72 h-[28rem] mx-auto flex flex-col justify-between">
+                    <!-- Imagen -->
+                    <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" class="w-56 h-56 mx-auto object-cover rounded-md mb-4">
+
+                    <!-- Contenido -->
+                    <div>
+                        <!-- Título -->
+                        <h3 class="text-xl font-bold mb-2 text-center text-white">{{ $juego->nombre }}</h3>
+
+                        <!-- Categoría -->
+                        <p class="text-gray-400 text-sm mb-4 text-center">{{ $juego->categoria }}</p>
+                    </div>
+
+                    <!-- Precio -->
+                    <p class="text-pink-500 font-bold text-lg text-center">${{ number_format($juego->precio, 2) }}</p>
+                </div>
+            @endforeach
+
+
+</section>
+
+<!-- Sección de Horarios -->
+<section id="horarios" class="py-12 bg-gray-900">
+    <h2 class="text-3xl font-bold text-center mb-8 text-white">Horarios del Gamer Fest</h2>
+    <p class="text-lg text-gray-400 text-center mb-8">
+        Consulta los horarios de las actividades y no te pierdas ningún evento importante.
+    </p>
+    <div class="overflow-x-auto flex justify-center">
+        <table class="min-w-[70%] text-sm text-left text-gray-400 border border-gray-700">
+            <thead class="bg-gray-700 text-gray-300">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-center">Horario</th>
+                    <th scope="col" class="px-6 py-3 text-center">Actividad</th>
+                    <th scope="col" class="px-6 py-3 text-center">Lugar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Fila 1 -->
+                <tr class="border-b border-gray-700">
+                    <td class="px-6 py-4 text-center">10:00 AM</td>
+                    <td class="px-6 py-4 text-center">Ceremonia de Apertura</td>
+                    <td class="px-6 py-4 text-center">Auditorio Principal</td>
+                </tr>
+                <!-- Fila 2 -->
+                <tr class="border-b border-gray-700">
+                    <td class="px-6 py-4 text-center">11:00 AM</td>
+                    <td class="px-6 py-4 text-center">Exhibición de Cosplay</td>
+                    <td class="px-6 py-4 text-center">Escenario Principal</td>
+                </tr>
+                <!-- Fila 3 -->
+                <tr class="border-b border-gray-700">
+                    <td class="px-6 py-4 text-center">12:00 PM</td>
+                    <td class="px-6 py-4 text-center">Torneo de League of Legends</td>
+                    <td class="px-6 py-4 text-center">Zona Gamer</td>
+                </tr>
+                <!-- Fila 4 -->
+                <tr class="border-b border-gray-700">
+                    <td class="px-6 py-4 text-center">1:30 PM</td>
+                    <td class="px-6 py-4 text-center">Panel de Creadores de Contenido</td>
+                    <td class="px-6 py-4 text-center">Sala de Conferencias</td>
+                </tr>
+                <!-- Fila 5 -->
+                <tr class="border-b border-gray-700">
+                    <td class="px-6 py-4 text-center">3:00 PM</td>
+                    <td class="px-6 py-4 text-center">Panel de Desarrolladores</td>
+                    <td class="px-6 py-4 text-center">Sala de Conferencias</td>
+                </tr>
+                <!-- Fila 6 -->
+                <tr class="border-b border-gray-700">
+                    <td class="px-6 py-4 text-center">4:30 PM</td>
+                    <td class="px-6 py-4 text-center">Competencia de Rocket League</td>
+                    <td class="px-6 py-4 text-center">Zona Competitiva</td>
+                </tr>
+                <!-- Fila 7 -->
+                <tr class="border-b border-gray-700">
+                    <td class="px-6 py-4 text-center">6:00 PM</td>
+                    <td class="px-6 py-4 text-center">Final de Fortnite</td>
+                    <td class="px-6 py-4 text-center">Escenario Principal</td>
+                </tr>
+                <!-- Fila 8 -->
+                <tr class="border-b border-gray-700">
+                    <td class="px-6 py-4 text-center">7:30 PM</td>
+                    <td class="px-6 py-4 text-center">Entrega de Premios</td>
+                    <td class="px-6 py-4 text-center">Auditorio Principal</td>
+                </tr>
+                <!-- Fila 9 -->
+                <tr>
+                    <td class="px-6 py-4 text-center">8:00 PM</td>
+                    <td class="px-6 py-4 text-center">Cierre del Evento</td>
+                    <td class="px-6 py-4 text-center">Escenario Principal</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
 
+<!-- Sección de Reglamentos -->
+<section id="reglamentos" class="py-12 bg-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-8 text-white">Reglamentos del Evento</h2>
+    <p class="text-lg text-gray-400 text-center mb-8">
+        Descarga el reglamento completo para conocer todas las reglas del evento.
+    </p>
+    <div class="text-center">
+        <a href="{{ asset('pdf/REGLAMENTO GAMER FEST.pdf') }}" download
+           class="neon-btn">
+            Descargar Reglamento
+        </a>
+    </div>
+</section>
+
 <!-- Sección de patrocinadores -->
-<section class="py-12 bg-gray-900">
+<section id="patrocinadores" class="py-12 bg-gray-900">
     <h2 class="text-3xl font-bold text-center mb-8">Nuestros Patrocinadores</h2>
     <p class="text-lg text-gray-400 text-center mb-8">
         Gracias a nuestros patrocinadores por hacer posible esta increíble experiencia.
@@ -171,7 +290,7 @@
 </section>
 
 <!-- Barra de redes sociales -->
-<footer class="py-12 bg-gray-800">
+<footer id="redes-sociales" class="py-12 bg-gray-800">
     <div class="text-center">
         <h3 class="text-2xl font-bold text-white mb-6">Encuéntranos en nuestras redes sociales</h3>
         <div class="flex justify-center gap-6">

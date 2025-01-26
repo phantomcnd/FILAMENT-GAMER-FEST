@@ -44,7 +44,7 @@
 
             <!-- Universidad -->
             <div class="mb-6">
-                <x-input-label for="universidad" :value="__('Universidad')" class="block text-lg font-semibold text-white mb-2" />
+                <label for="universidad" class="block text-lg font-semibold text-white mb-2">Universidad</label>
                 <select 
                     id="universidad" 
                     name="universidad" 
@@ -52,14 +52,17 @@
                     required
                 >
                     <option value="">Selecciona tu universidad</option>
-                    <option value="Universidad Central del Ecuador">Universidad Central del Ecuador</option>
-                    <option value="Escuela Politécnica Nacional">Escuela Politécnica Nacional</option>
-                    <option value="Universidad de Guayaquil">Universidad de Guayaquil</option>
+                    @foreach ($universities as $university)
+                        <option value="{{ $university->name }}">{{ $university->name }}</option>
+                    @endforeach
                 </select>
                 @error('universidad')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </div>
+
+
+
 
             <!-- Número de Teléfono -->
             <div class="mb-6">

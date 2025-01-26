@@ -1,6 +1,13 @@
 <?php
 
 return [
+    
+    'auth' => [
+        'guard' => 'web', // Guard que estás usando (por defecto, 'web')
+        'logout' => [
+            'redirect' => 'welcome', // Redirigir a la página principal después de cerrar sesión
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

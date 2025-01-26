@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
 
 .neon-form {
     box-shadow: 0 0 10px rgba(0, 191, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.6), 0 0 40px rgba(0, 191, 255, 0.4);
@@ -42,10 +45,10 @@
     color: #ffffff;
     text-transform: uppercase;
     text-decoration: none;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
     background-color: #1d4ed8; /* Azul oscuro */
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
     box-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.4);
     transition: all 0.3s ease-in-out;
@@ -55,7 +58,7 @@
 .neon-btn:hover {
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6), 0 0 45px rgba(59, 130, 246, 0.5);
     background-color: #2563eb; /* Azul más claro */
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    transform: scale(1.04); /* Aumenta ligeramente el tamaño */
 }
 
 /* Estilo para asegurar que el botón tenga bordes suaves */
@@ -63,3 +66,33 @@
     outline: none;
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6);
 }
+
+/* Estilo básico del botón con efecto de neón */
+.btn-login {
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #ff326c; /* Azul oscuro */
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(255, 0, 93, 0.5), 0 0 10px rgba(249, 42, 42, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efecto de brillo al pasar el mouse */
+.btn-login:hover {
+    box-shadow: 0 0 15px rgba(246, 59, 59, 0.8), 0 0 30px rgba(246, 59, 96, 0.6), 0 0 45px rgba(246, 59, 121, 0.5);
+    background-color: #ff2d2d; /* Azul más claro */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+/* Estilo para asegurar que el botón tenga bordes suaves */
+.btn-login:focus {   
+    outline: none;
+    box-shadow: 0 0 15px rgba(246, 59, 78, 0.8), 0 0 30px rgba(246, 59, 103, 0.6);
+}
+

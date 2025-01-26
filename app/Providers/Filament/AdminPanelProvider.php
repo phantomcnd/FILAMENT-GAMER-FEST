@@ -17,11 +17,23 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Filament\Pages\Dashboard;
+
+
+// Importaciones adicionales necesarias
+use Illuminate\Support\Facades\Event; // Clase para eventos
+use Illuminate\Auth\Events\Logout;  // Evento de cierre de sesión
+
 
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+        // Escucha el evento de logout
+        Event::listen(Logout::class, function () {
+            // Redirigir a 'home' al cerrar sesión
+            return redirect()->route('home')->send();
+        });
         return $panel
             ->default()
             ->id('admin')
@@ -33,7 +45,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                \App\Filament\Pages\Dashboard::class, // Aquí registras tu clase Dashboard
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([

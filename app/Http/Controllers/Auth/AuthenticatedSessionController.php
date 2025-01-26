@@ -28,7 +28,22 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended('/admin');
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        // Redirigir según el rol del usuario
+        switch ($user->rol_id) {
+            case 1: // Administrador
+                return redirect('/admin/dashboard');
+            case 2: // Participante
+                return redirect('/participantes/dashboard2');
+            case 3: // Tesorero
+                return redirect('/tesorero/dashboard3');
+            case 4: // Colaborador
+                return redirect('/colaboradores/dashboard4');
+            default:
+                abort(403, 'No tienes acceso a esta página.');
+        }
     }
 
     /**
